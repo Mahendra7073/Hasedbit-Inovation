@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tax Calculator</title>
+</head>
+<body>
+    <h2>Enter Your Salary</h2>
+    <input type="number" id="salaryInput" placeholder="e.g. 750000">
+    <button onclick="showTax()">Calculate Tax</button>
+    <p id="taxResult"></p>
+
+    <script>
+        function findTax(salary) {
+            let tax = 0;
+
+            switch (true) {
+                case (salary > 0 && salary <= 500000):
+                    tax = 0;
+                    break;
+                case (salary > 500000 && salary <= 1000000):
+                    tax = salary * 0.10;
+                    break;
+                case (salary > 1000000 && salary <= 1500000):
+                    tax = salary * 0.20;
+                    break;
+                case (salary > 1500000):
+                    tax = salary * 0.30;
+                    break;
+                default:
+                    return "Invalid salary amount";
+            }
+
+            return tax;
+        }
+
+        function showTax() {
+            const salary = parseFloat(document.getElementById("salaryInput").value);
+            const tax = findTax(salary);
+            document.getElementById("taxResult").innerText = `Tax Payable: ₹${tax}`;
+        }
+    </script>
+</body>
+</html>

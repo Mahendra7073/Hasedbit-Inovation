@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS Output on Webpage</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f1f1f1;
+    }
+    h2 {
+      color: #333;
+    }
+    p {
+      background: #fff;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>JavaScript Output</h1>
+  <div id="output"></div>
+
+  <script>
+    const outputDiv = document.getElementById("output");
+
+    function print(title, content) {
+      outputDiv.innerHTML += `<h2>${title}</h2><p>${content}</p>`;
+    }
+
+    // Question 1
+    function demoVariableScopes() {
+      let result = "";
+      if (true) {
+        var x = "I am var";
+      }
+      result += "x (var): " + x + "<br>";
+
+      if (true) {
+        let y = "I am let";
+        result += "y (let): " + y + "<br>";
+      }
+
+      if (true) {
+        const z = "I am const";
+        result += "z (const): " + z + "<br>";
+      }
+
+      return result;
+    }
+    print("Question 1: Variable Scope", demoVariableScopes());
+
+    // Question 2
+    const fruits = ["Apple", "Banana", "Cherry", "Date", "Elderberry"];
+    function getSecondFruit(arr) {
+      return arr[1];
+    }
+    print("Question 2: Second Fruit", getSecondFruit(fruits));
+
+    // Question 3
+    function pushThenPop(arr, newElement) {
+      arr.push(newElement);
+      arr.pop();
+      return arr;
+    }
+    const sampleArr3 = [1, 2, 3];
+    print("Question 3: After pushThenPop", pushThenPop(sampleArr3, 999).join(", "));
+
+    // Question 4
+    function squareNumbers(arr) {
+      return arr.map((num) => num * num);
+    }
+    const nums4 = [2, 4, 6, 8];
+    print("Question 4: Squared Numbers", squareNumbers(nums4).join(", "));
+
+    // Question 5
+    function filterOddNumbers(arr) {
+      return arr.filter((n) => n % 2 !== 0);
+    }
+    const nums5 = [1, 2, 3, 4, 5, 6, 7];
+    print("Question 5: Odd Numbers", filterOddNumbers(nums5).join(", "));
+
+    // Question 6
+    const person = {
+      name: "Mahendra",
+      age: 22,
+      occupation: "Software Developer",
+    };
+    function greetPerson(p) {
+      return `Hello, my name is ${p.name}. I am ${p.age} years old and I work as a ${p.occupation}.`;
+    }
+    print("Question 6: Greet Person", greetPerson(person));
+
+    // Question 7
+    function calculateArea(dimensions) {
+      return dimensions.width * dimensions.height;
+    }
+    const rect7 = { width: 5, height: 10 };
+    print("Question 7: Rectangle Area", calculateArea(rect7));
+
+    // Question 8
+    function getObjectKeys(obj) {
+      return Object.keys(obj);
+    }
+    const sampleObj8 = { color: "red", size: "medium", quantity: 42 };
+    print("Question 8: Object Keys", getObjectKeys(sampleObj8).join(", "));
+
+    // Question 9
+    function mergeObjects(obj1, obj2) {
+      return Object.assign({}, obj1, obj2);
+    }
+    const a9 = { name: "Bob", age: 25 };
+    const b9 = { occupation: "Designer", age: 26 };
+    print("Question 9: Merged Object", JSON.stringify(mergeObjects(a9, b9)));
+
+    // Question 10
+    function sumArray(arr) {
+      return arr.reduce((acc, curr) => acc + curr, 0);
+    }
+    const nums10 = [5, 10, 15, 20];
+    print("Question 10: Sum of Array", sumArray(nums10));
+  </script>
+
+</body>
+</html>
